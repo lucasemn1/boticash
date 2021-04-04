@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import App from "./App";
+import Landing from "./pages/Landing/Landing";
 
 const Router: FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={App}/>
+        <Route path="/" exact component={Landing}/>
       </Switch>
     </BrowserRouter>
   );
