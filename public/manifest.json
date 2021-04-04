@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Boticash",
+  "name": "Boticash - Sistema de gerenciamento de cashback da Boticário.",
   "icons": [
     {
       "src": "favicon.ico",
