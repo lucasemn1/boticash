@@ -19,6 +19,7 @@ export interface ITheme {
     getBackgroundColor2: () => string;
     getBackgroundContrastColor: () => string;
     getBackgroundContrastColor2: () => string;
+    getBorderColor: () => string;
   },
 }
 
@@ -52,6 +53,10 @@ export const lightTheme: ITheme = {
 
     getBackgroundContrastColor2() {
       return this.light2;
+    },
+
+    getBorderColor() {
+      return this.light4;
     }
   }
 } 
