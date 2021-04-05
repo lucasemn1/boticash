@@ -6,6 +6,11 @@ export const FullPage = styled.div`
   height: 100vh;
 `;
 
+export const PageContent = styled.div`
+  width: 100%;
+  max-width: 1000px;
+`;
+
 export const Flex = styled.div`
   display: flex;
   align-items: center;

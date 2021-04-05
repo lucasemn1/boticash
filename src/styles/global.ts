@@ -32,4 +32,18 @@ export default createGlobalStyle`
   p {
     font-size: 15px;
   }
+
+  button {
+    width: 100%;
+    height: 47px;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.1s;
+  }
 `;

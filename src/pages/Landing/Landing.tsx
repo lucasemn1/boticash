@@ -1,40 +1,54 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
+
+//Images
+import landingPageArt from "../../assets/imgs/landing_page_art.svg";
 
 // Components
-import Input from "../../components/Input/Input";
-import { AtSign } from "react-feather";
+import { LogIn } from "react-feather";
+
+import {
+  Page,
+  FlexColumn,
+  ContentArea,
+  PageContent,
+  ArtArea
+} from "./style";
+
+import {
+  PrimaryButton,
+  TransparentButton,
+} from "../../styles/components/buttons";
 
 const Landing: FC = () => {
-  const [email, setEmail] = useState<string>("");
-
   // onMounted
   useEffect(() => {
     document.title = "Boticash | Crie uma nova conta ou faça login.";
   }, []);
 
   return (
-    <>
-      <h1>Hello Landing page</h1>
-      <Input
-        label="E-mail"
-        type="email"
-        name="email"
-        value={email}
-        onSetValue={setEmail}
-      >
-        <AtSign size="18" />
-      </Input>
+    <Page>
+      <PageContent>
+        <ContentArea>
+          <h1>Boticash</h1>
+          <h3>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s.
+          </h3>
 
-      <Input
-        label="E-mail"
-        type="email"
-        name="email"
-        value={email}
-        onSetValue={setEmail}
-      >
-        <AtSign size="18" />
-      </Input>
-    </>
+          <FlexColumn>
+            <PrimaryButton>Criar nova conta</PrimaryButton>
+            <TransparentButton>
+              Fazer login
+              <LogIn size="18" />
+            </TransparentButton>
+          </FlexColumn>
+        </ContentArea>
+        <ArtArea>
+          <img src={landingPageArt} alt="Ilustração Boticash"/>
+        </ArtArea>
+      </PageContent>
+    </Page>
   );
 };
 
