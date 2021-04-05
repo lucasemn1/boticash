@@ -5,6 +5,7 @@ import {
   InputContainer,
   Label,
   InputField,
+  InputMaskedField,
   InputBox,
   InputIconBox,
 } from "./style";
@@ -17,6 +18,7 @@ interface IProps {
   required?: boolean;
   placeholder?: string;
   onSetValue?: Function;
+  mask?: string;
 }
 
 const Input: FC<IProps> = ({
@@ -28,6 +30,7 @@ const Input: FC<IProps> = ({
   type,
   required,
   onSetValue,
+  mask
 }) => {
   function handleInput(event: ChangeEvent<HTMLInputElement>) {
     if (onSetValue) {
@@ -35,10 +38,22 @@ const Input: FC<IProps> = ({
     }
   }
 
-  return (
-    <InputContainer>
-      <Label>{label}</Label>
-      <InputBox>
+  function renderInput() {
+    if(mask) {
+      return (
+        <InputMaskedField 
+          mask={mask}
+          type={type ?? "text"}
+          placeholder={placeholder}
+          value={value}
+          name={name}
+          onChange={handleInput}
+          required={required}
+        />
+      );
+    }
+    else {
+      return (
         <InputField
           type={type ?? "text"}
           placeholder={placeholder}
@@ -47,7 +62,16 @@ const Input: FC<IProps> = ({
           onChange={handleInput}
           required={required}
         />
-        <InputIconBox>{children}</InputIconBox>
+      );
+    }
+  }
+
+  return (
+    <InputContainer>
+      <Label>{label}</Label>
+      <InputBox>
+        { renderInput() } 
+        { children && <InputIconBox>{children}</InputIconBox> }
       </InputBox>
     </InputContainer>
   );

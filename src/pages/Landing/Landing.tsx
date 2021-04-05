@@ -6,6 +6,7 @@ import landingPageArt from "../../assets/imgs/landing_page_art.svg";
 // Components
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
 
 // Styled components
 import {
@@ -32,13 +33,14 @@ const Landing: FC = () => {
           
           <BrowserRouter>
             <Switch>
-              <Route path="/" exact component={Home}/>
-              <Route path="/login" exact component={Login}/>
+              <Route path="/" exact component={Home} />
+              <Route path="/login" exact component={Login} />
+              <Route path="/nova-conta" exact component={CreateAccount} />
             </Switch>
           </BrowserRouter>
         </ContentArea>
         <ArtArea>
-          <img src={landingPageArt} alt="Ilustração Boticash"/>
+          <img src={landingPageArt} alt="Ilustração Boticash" />
         </ArtArea>
       </PageContent>
     </Page>

@@ -7,8 +7,14 @@ import Router from "./Router";
 import GlobalStyle from "./styles/global";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./styles/themes";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const appBar: any = document.querySelector('meta[name="theme-color"]');
+    appBar.content = lightTheme.colors.light4;
+  }, []);
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={lightTheme}>

@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import { MD } from "../../util/mediaBreakpoints";
 
 export const FullPage = styled.div`
   width: 100%;
+  height: 100%;
   max-width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 39px;
 `;
 
 export const PageContent = styled.div`
@@ -16,6 +19,12 @@ export const Flex = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+
+  @media (max-width: ${MD}) {
+    & > {
+      flex-direction: column;
+    }
+  }
 `;
 
 export const FlexColumn = styled(Flex)`

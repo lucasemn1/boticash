@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import InputMask from 'react-input-mask';
 
 export const InputContainer = styled.div`
   display: flex;
@@ -20,6 +21,13 @@ export const InputBox = styled.div`
 `;
 
 export const InputField = styled.input`
+  padding: 0 5px 0 23px;
+  height: 100%;
+  width: 100%;
+  border: none;
+`;
+
+export const InputMaskedField = styled(InputMask)`
   padding: 0 5px 0 23px;
   height: 100%;
   width: 100%;
