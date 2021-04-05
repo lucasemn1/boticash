@@ -4,20 +4,19 @@ import { FC, useEffect } from "react";
 import landingPageArt from "../../assets/imgs/landing_page_art.svg";
 
 // Components
-import { LogIn } from "react-feather";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
 
+// Styled components
 import {
   Page,
-  FlexColumn,
   ContentArea,
   PageContent,
   ArtArea
 } from "./style";
 
-import {
-  PrimaryButton,
-  TransparentButton,
-} from "../../styles/components/buttons";
+// Router components
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const Landing: FC = () => {
   // onMounted
@@ -30,19 +29,13 @@ const Landing: FC = () => {
       <PageContent>
         <ContentArea>
           <h1>Boticash</h1>
-          <h3>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s.
-          </h3>
-
-          <FlexColumn>
-            <PrimaryButton>Criar nova conta</PrimaryButton>
-            <TransparentButton>
-              Fazer login
-              <LogIn size="18" />
-            </TransparentButton>
-          </FlexColumn>
+          
+          <BrowserRouter>
+            <Switch>
+              <Route path="/" exact component={Home}/>
+              <Route path="/login" exact component={Login}/>
+            </Switch>
+          </BrowserRouter>
         </ContentArea>
         <ArtArea>
           <img src={landingPageArt} alt="Ilustração Boticash"/>

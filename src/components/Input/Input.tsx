@@ -11,7 +11,7 @@ import {
 
 interface IProps {
   value?: string;
-  type?: "text" | "email" | "number" | "date";
+  type?: "text" | "email" | "number" | "date" | "password";
   label?: string;
   name?: string;
   required?: boolean;

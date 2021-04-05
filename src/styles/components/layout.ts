@@ -17,3 +17,8 @@ export const Flex = styled.div`
   justify-content: center;
   width: 100%;
 `;
+
+export const FlexColumn = styled(Flex)`
+  flex-direction: column;
+  gap: 15px;
+`;

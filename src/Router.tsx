@@ -6,7 +6,7 @@ const Router: FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Landing}/>
+        <Route path="/" component={Landing}/>
       </Switch>
     </BrowserRouter>
   );

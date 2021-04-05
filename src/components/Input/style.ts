@@ -7,6 +7,7 @@ export const InputContainer = styled.div`
 
 export const Label = styled.label`
   font-size: 16px;
+  text-align: left;
   margin-bottom: 11px;
 `;
 

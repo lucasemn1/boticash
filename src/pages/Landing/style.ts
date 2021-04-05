@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {
   PageContent as DefaultPageContent,
-  Flex,
   FullPage,
 } from "../../styles/components/layout";
 import * as mediaBreakpoints from "../../util/mediaBreakpoints";
@@ -30,7 +29,7 @@ export const ContentArea = styled.div`
   width: 100%;
 
   & > h1 {
-    margin-bottom: 48px;
+    margin-bottom: 18px;
   }
 
   & > h3 {
@@ -56,15 +55,13 @@ export const ArtArea = styled.div`
   }
 
   @media (max-width: ${mediaBreakpoints.LG}px) {
-    justify-content: center;
+    & {
+      margin-top: 50px;
+      justify-content: center;
+    }
 
     & > img {
-      max-width: 209px;
+      max-width: 150px;
     }
   }
-`;
-
-export const FlexColumn = styled(Flex)`
-  flex-direction: column;
-  gap: 15px;
 `;
