@@ -29,7 +29,7 @@ export const StatusIndicator = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  width: 330px;
+  width: 100%;
   height: 309px;
   background-color: ${({ theme }) => theme.colors.getBackgroundColor2()};
   padding: 41px;

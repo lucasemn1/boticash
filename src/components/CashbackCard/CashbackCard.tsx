@@ -1,4 +1,5 @@
 import { FC } from "react";
+import ICashbackCard from "../../interfaces/CashbackCard";
 import { getDateInBrazilianStandard } from "../../util/data";
 
 // Styled components
@@ -9,14 +10,7 @@ import {
   StatusIndicator,
 } from "./style";
 
-interface IProps {
-  type: "approved" | "in-progress" | "disapproved";
-  expectedValue: string;
-  purchasePrice: string;
-  percentageWon: number;
-  saleDate: Date;
-  saleCode: string;
-}
+interface IProps extends ICashbackCard {};
 
 const CashbackCard: FC<IProps> = ({
   type,

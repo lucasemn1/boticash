@@ -9,12 +9,7 @@ import Login from "./pages/Login/Login";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 
 // Styled components
-import {
-  Page,
-  ContentArea,
-  PageContent,
-  ArtArea
-} from "./style";
+import { Page, ContentArea, PageContent, ArtArea } from "./style";
 
 // Router
 import { Switch, Route } from "react-router-dom";
@@ -31,7 +26,7 @@ const Landing: FC = () => {
       <PageContent>
         <ContentArea>
           <h1>Boticash</h1>
-          
+
           <Switch>
             <Route exact path={LANDING} component={Home} />
             <Route exact path={LOGIN} component={Login} />

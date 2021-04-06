@@ -38,6 +38,12 @@ const Input: FC<IProps> = ({
     }
   }
 
+  function renderLabel() {
+    if (label) {
+      return (<Label htmlFor="cardInput">{label}</Label>);
+    }
+  }
+
   function renderInput() {
     if(mask) {
       return (
@@ -68,7 +74,7 @@ const Input: FC<IProps> = ({
 
   return (
     <InputContainer>
-      <Label htmlFor="cardInput">{label}</Label>
+      { renderLabel() }
       <InputBox>
         { renderInput() } 
         { children && <InputIconBox>{children}</InputIconBox> }

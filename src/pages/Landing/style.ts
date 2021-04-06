@@ -9,6 +9,8 @@ export const Page = styled(FullPage)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  width: 100%;
 `;
 
 export const PageContent = styled(DefaultPageContent)`

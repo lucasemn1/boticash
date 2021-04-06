@@ -15,13 +15,13 @@ export const Label = styled.label`
 export const InputBox = styled.div`
   height: 47px;
   background-color: ${({ theme }) => theme.colors.getBackgroundColor2()};
-  font-size: 16px;
   border: 1px solid ${({ theme }) => theme.colors.getBorderColor()};
   display: flex;
 `;
 
 export const InputField = styled.input`
   padding: 0 5px 0 23px;
+  font-size: 16px;
   height: 100%;
   width: 100%;
   border: none;
@@ -29,6 +29,7 @@ export const InputField = styled.input`
 
 export const InputMaskedField = styled(InputMask)`
   padding: 0 5px 0 23px;
+  font-size: 16px;
   height: 100%;
   width: 100%;
   border: none;
