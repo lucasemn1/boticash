@@ -16,8 +16,9 @@ import {
   ArtArea
 } from "./style";
 
-// Router components
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+// Router
+import { Switch, Route } from "react-router-dom";
+import { CREATE_ACCOUNT, LANDING, LOGIN } from "../../router/routes";
 
 const Landing: FC = () => {
   // onMounted
@@ -31,13 +32,11 @@ const Landing: FC = () => {
         <ContentArea>
           <h1>Boticash</h1>
           
-          <BrowserRouter>
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/login" exact component={Login} />
-              <Route path="/nova-conta" exact component={CreateAccount} />
-            </Switch>
-          </BrowserRouter>
+          <Switch>
+            <Route exact path={LANDING} component={Home} />
+            <Route exact path={LOGIN} component={Login} />
+            <Route exact path={CREATE_ACCOUNT} component={CreateAccount} />
+          </Switch>
         </ContentArea>
         <ArtArea>
           <img src={landingPageArt} alt="Ilustração Boticash" />

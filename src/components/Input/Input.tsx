@@ -5,9 +5,9 @@ import {
   InputContainer,
   Label,
   InputField,
-  InputMaskedField,
   InputBox,
   InputIconBox,
+  InputMaskedField
 } from "./style";
 
 interface IProps {
@@ -41,7 +41,7 @@ const Input: FC<IProps> = ({
   function renderInput() {
     if(mask) {
       return (
-        <InputMaskedField 
+        <InputMaskedField
           mask={mask}
           type={type ?? "text"}
           placeholder={placeholder}
@@ -68,7 +68,7 @@ const Input: FC<IProps> = ({
 
   return (
     <InputContainer>
-      <Label>{label}</Label>
+      <Label htmlFor="cardInput">{label}</Label>
       <InputBox>
         { renderInput() } 
         { children && <InputIconBox>{children}</InputIconBox> }

@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { useHistory } from "react-router";
+import { CREATE_ACCOUNT, HOME } from "../../../../router/routes";
 
 // Components
 import Input from '../../../../components/Input/Input';
@@ -12,36 +14,44 @@ import { LoginForm, FlexColumn } from "./style";
 import { AtSign, Key, LogIn } from "react-feather";
 
 const Login: FC = () => {
-  return <>
-    <h3>Fazer login</h3>
+  const history = useHistory();
 
-    <LoginForm>
-      <Input
-        label="Email"
-        type="email"
-        name="email"
-        required
-      >
-        <AtSign size="18" />
-      </Input>
-      <Input
-        label="Senha"
-        type="password"
-        name="password"
-        required
-      >
-        <Key size="18" />
-      </Input>
+  function goToHome() {
+    history.push(HOME);
+  }
 
-      <FlexColumn>
-        <PrimaryButton>
-          Fazer login
-          <LogIn size="18" />
-        </PrimaryButton>
-        <TransparentLink to="/nova-conta">Criar nova conta</TransparentLink>
-      </FlexColumn>
-    </LoginForm>
-  </>;
+  return (
+    <>
+      <h3>Fazer login</h3>
+
+      <LoginForm>
+        <Input
+          label="Email"
+          type="email"
+          name="email"
+          required
+        >
+          <AtSign size="18" />
+        </Input>
+        <Input
+          label="Senha"
+          type="password"
+          name="password"
+          required
+        >
+          <Key size="18" />
+        </Input>
+
+        <FlexColumn>
+          <PrimaryButton onClick={goToHome}>
+            Fazer login
+            <LogIn size="18" />
+          </PrimaryButton>
+          <TransparentLink to={CREATE_ACCOUNT}>Criar nova conta</TransparentLink>
+        </FlexColumn>
+      </LoginForm>
+    </>
+  );
 }
 
 export default Login;

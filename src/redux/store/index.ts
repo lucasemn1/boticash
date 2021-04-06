@@ -7,16 +7,18 @@ import { combineReducers, createStore } from "redux";
     * I do not recommend that you delete the example reducer from the project, 
       when you start it, just remove where it is being used in this file. 
 */
-import reducerExample, { IReducerExampleState } from "../reducers/reducerExample";
+import reducerExample, {
+  IReducerExampleState,
+} from "../reducers/reducerExample";
 
 export interface IState {
-  // Enter the reducer status typing here 
+  // Enter the reducer status typing here
   example: IReducerExampleState;
 }
 
 const reducers = combineReducers({
-  // Name and match your reducer to the main 
-  example: reducerExample
+  // Name and match your reducer to the main
+  example: reducerExample,
 });
 
 const store = createStore(reducers);

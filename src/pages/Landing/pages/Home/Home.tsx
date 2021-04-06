@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { CREATE_ACCOUNT, LOGIN } from "../../../../router/routes";
 
 // Styled components
 import { FlexColumn } from "../../../../styles/components/layout";
@@ -15,8 +16,8 @@ const Home: FC = () => {
     </h3>
 
     <FlexColumn>
-      <PrimaryLink to="/nova-conta">Criar nova conta</PrimaryLink>
-      <TransparentLink to="/login">
+      <PrimaryLink to={CREATE_ACCOUNT}>Criar nova conta</PrimaryLink>
+      <TransparentLink to={LOGIN}>
         Fazer login
         <LogIn size="18" />
       </TransparentLink>

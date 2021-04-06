@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 
 // Pages and styles
-import Router from "./Router";
+import Router from "./router/Router";
 import GlobalStyle from "./styles/global";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./styles/themes";

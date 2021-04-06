@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { LOGIN } from "../../../../router/routes";
 
 // Components
 import Input from '../../../../components/Input/Input';
@@ -21,6 +22,7 @@ const CreateAccount: FC = () => {
         label="Nome completo"
         type="text"
         name="name"
+        key="name"
         required
       />
       <Input
@@ -28,23 +30,26 @@ const CreateAccount: FC = () => {
         mask="999.999.999-99"
         type="text"
         name="cpf"
+        key="cpf"
         required
       />
       <Input
         label="E-mail"
         type="email"
         name="email"
+        key="email"
         required
       />
       <Input
         label="Senha"
         type="password"
         name="password"
+        key="password"
         required
       />
 
       <Flex>
-        <TransparentLink to="/login">
+        <TransparentLink to={LOGIN}>
           Fazer login
           <LogIn size="18" />
         </TransparentLink>

@@ -1,5 +1,3 @@
-
-
 export interface ITheme {
   title: string;
   colors: {
@@ -30,7 +28,7 @@ export const lightTheme: ITheme = {
     primaryHover: "rgb(75, 116, 20)",
     secondary: "rgb(245, 130, 32)",
     secondaryHover: "rgb(241, 90, 34)",
-    danger: "rgb(241, 71, 34)",
+    danger: "rgb(241, 71, 71)",
     dark: "rgb(44, 44, 44)",
     dark2: "rgb(116, 116, 116)",
     dark3: "rgb(190, 190, 190)",
@@ -59,4 +57,4 @@ export const lightTheme: ITheme = {
       return this.light4;
     }
   }
-} 
+}
