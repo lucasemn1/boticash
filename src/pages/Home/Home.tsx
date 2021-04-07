@@ -1,4 +1,5 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { scrollToTop } from "../../util/window";
 
 // Components
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -27,7 +28,7 @@ import ICashbackCard from "../../interfaces/CashbackCard";
 const Home: FC = () => {
   const [sales] = useState<ICashbackCard[]>([
     {
-      type: "approved",
+      status: "approved",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
@@ -35,73 +36,129 @@ const Home: FC = () => {
       saleCode: "ABCDEFGHIJ",
     },
     {
-      type: "in-progress",
+      status: "in-progress",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
       saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
+      saleCode: "16283",
     },
     {
-      type: "disapproved",
+      status: "disapproved",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
       saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
+      saleCode: "090982",
     },
     {
-      type: "approved",
+      status: "approved",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
       saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
+      saleCode: "12I8Y",
     },
     {
-      type: "in-progress",
+      status: "in-progress",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
       saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
+      saleCode: "OAD918",
     },
     {
-      type: "disapproved",
+      status: "disapproved",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
       saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
+      saleCode: "IAIJDJ1",
     },
     {
-      type: "approved",
+      status: "approved",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
       saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
+      saleCode: "O12HD",
     },
     {
-      type: "in-progress",
+      status: "in-progress",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
       saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
+      saleCode: "194HDK",
     },
     {
-      type: "disapproved",
+      status: "disapproved",
       expectedValue: "R$ 5,50",
       purchasePrice: "R$ 55,00",
       percentageWon: 10,
       saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
-    }
+      saleCode: "10ALADKS",
+    },
   ]);
+  const [filteredSales, setFilteredSales] = useState<ICashbackCard[]>([]);
+  const [statusFilter, setStatusFilter] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>("");
 
-  const [statusFilter, setStatusFilter] = useState<string>('');
-  const [searchValue, setSearchValue] = useState<string>('');
+  useEffect(scrollToTop, []);
+
+  useEffect(() => {
+    handleFilter(searchValue, statusFilter);
+    /* eslint-disable-next-line */
+  }, [searchValue, statusFilter]);
+
+  function handleFilter(code: string, status: string) {
+    let salesResult = sales;
+
+    if (code) {
+      salesResult = salesResult.filter(
+        (sale) => sale.saleCode.toLowerCase().includes(code.toLowerCase())
+      );
+    }
+
+    if (status) {
+      salesResult = salesResult.filter(
+        ({ status }) => {
+
+          switch (statusFilter) {
+            case "Aprovado":
+              return status === "approved";
+
+            case "Em andamento":
+              return status === "in-progress";
+
+            case "Reprovado":
+              return status === "disapproved";
+            
+            default:
+              return true;
+          }
+        }
+      );
+    }
+
+    setFilteredSales(salesResult);
+  }
+
+  function renderCards() {
+    const salesToRender = filteredSales ? filteredSales : sales;
+
+    return salesToRender.map((sale, index) => (
+      <CashbackCard
+        key={index}
+        status={sale.status}
+        expectedValue={sale.expectedValue}
+        purchasePrice={sale.purchasePrice}
+        percentageWon={sale.percentageWon}
+        saleDate={sale.saleDate}
+        saleCode={sale.saleCode}
+      />
+    ));
+  }
 
   return (
     <FullPage>
@@ -110,11 +167,11 @@ const Home: FC = () => {
       <div>
         <PageContent>
           <Topbar />
-          
+
           <AmountIndicatorLine>
             <AmountIndicatorArea>
               <div>
-                <img src={cashbackIcon} alt="Arte de indicação de cashback."/>
+                <img src={cashbackIcon} alt="Arte de indicação de cashback." />
               </div>
 
               <div>
@@ -128,7 +185,7 @@ const Home: FC = () => {
               <Plus size="18" />
             </PrimaryButton>
           </AmountIndicatorLine>
-        
+
           <SearchArea>
             <Input
               placeholder="Código da compra"
@@ -142,27 +199,15 @@ const Home: FC = () => {
               value={statusFilter}
               onSetValue={setStatusFilter}
               label="Filtar por"
-              options={["Aprovado", "Em andamento", "Reprovado"]}
+              options={["Todos", "Aprovado", "Em andamento", "Reprovado"]}
             />
           </SearchArea>
 
-          <CardsGrid>
-            {sales.map((sale, index) => (
-              <CashbackCard
-                key={index}
-                type={sale.type}
-                expectedValue={sale.expectedValue}
-                purchasePrice={sale.purchasePrice}
-                percentageWon={sale.percentageWon}
-                saleDate={sale.saleDate}
-                saleCode={sale.saleCode}
-              />
-            ))}
-          </CardsGrid>
+          <CardsGrid>{renderCards()}</CardsGrid>
         </PageContent>
       </div>
     </FullPage>
   );
-}
+};
 
 export default Home;

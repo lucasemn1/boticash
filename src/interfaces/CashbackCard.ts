@@ -1,5 +1,5 @@
 interface ICashbackCard {
-  type: "approved" | "in-progress" | "disapproved";
+  status: "approved" | "in-progress" | "disapproved";
   expectedValue: string;
   purchasePrice: string;
   percentageWon: number;

@@ -13,7 +13,7 @@ import {
 interface IProps extends ICashbackCard {};
 
 const CashbackCard: FC<IProps> = ({
-  type,
+  status,
   expectedValue,
   purchasePrice,
   percentageWon,
@@ -27,11 +27,11 @@ const CashbackCard: FC<IProps> = ({
       disapproved: "Reprovado",
     };
 
-    return messages[type];
+    return messages[status];
   }
 
   return (
-    <CardContainer className={type}>
+    <CardContainer className={status}>
       <ExpectedValue>{expectedValue}</ExpectedValue>
 
       <GridContainer>
