@@ -18,7 +18,7 @@ interface IProps {
   required?: boolean;
   placeholder?: string;
   onSetValue?: Function;
-  mask?: string;
+  mask?: string | string[];
 }
 
 const Input: FC<IProps> = ({
@@ -73,7 +73,7 @@ const Input: FC<IProps> = ({
   }
 
   return (
-    <InputContainer>
+    <InputContainer className="input-box">
       { renderLabel() }
       <InputBox>
         { renderInput() } 

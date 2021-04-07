@@ -20,6 +20,7 @@ export const FullPage = styled.div`
 export const PageContent = styled.div`
   width: 100%;
   max-width: 1029px;
+  margin: 0 auto;
 `;
 
 export const Flex = styled.div`

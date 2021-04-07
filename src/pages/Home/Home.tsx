@@ -1,17 +1,22 @@
 import { FC, useEffect, useState } from "react";
 import { scrollToTop } from "../../util/window";
+import { useHistory } from "react-router";
+import ICashbackCard from "../../interfaces/CashbackCard";
+import salesToTest from "./sales";
 
 // Components
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
 import Topbar from "../../components/Topbar/Topbar";
-// import CashbackCard from "../../components/CashbackCard/CashbackCard";
+import CashbackCard from "../../components/CashbackCard/CashbackCard";
 
 // Styled components
 import {
   FullPage,
   PageContent,
+} from "../../styles/components/layout";
+import {
   AmountIndicatorLine,
   PrimaryButton,
   AmountIndicatorArea,
@@ -21,90 +26,22 @@ import {
 
 // Icons
 import { Plus, Search } from "react-feather";
+
+// Art
 import cashbackIcon from "../../assets/icons/cashback_icon.svg";
-import CashbackCard from "../../components/CashbackCard/CashbackCard";
-import ICashbackCard from "../../interfaces/CashbackCard";
+import { REGISTER_SALE } from "../../router/routes";
 
 const Home: FC = () => {
-  const [sales] = useState<ICashbackCard[]>([
-    {
-      status: "approved",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "ABCDEFGHIJ",
-    },
-    {
-      status: "in-progress",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "16283",
-    },
-    {
-      status: "disapproved",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "090982",
-    },
-    {
-      status: "approved",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "12I8Y",
-    },
-    {
-      status: "in-progress",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "OAD918",
-    },
-    {
-      status: "disapproved",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "IAIJDJ1",
-    },
-    {
-      status: "approved",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "O12HD",
-    },
-    {
-      status: "in-progress",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "194HDK",
-    },
-    {
-      status: "disapproved",
-      expectedValue: "R$ 5,50",
-      purchasePrice: "R$ 55,00",
-      percentageWon: 10,
-      saleDate: new Date(Date.now()),
-      saleCode: "10ALADKS",
-    },
-  ]);
+  const history = useHistory();
+
+  const [sales] = useState<ICashbackCard[]>(salesToTest);
   const [filteredSales, setFilteredSales] = useState<ICashbackCard[]>([]);
   const [statusFilter, setStatusFilter] = useState<string>("");
   const [searchValue, setSearchValue] = useState<string>("");
 
-  useEffect(scrollToTop, []);
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   useEffect(() => {
     handleFilter(searchValue, statusFilter);
@@ -166,7 +103,7 @@ const Home: FC = () => {
 
       <div>
         <PageContent>
-          <Topbar />
+          <Topbar title="Vendas" />
 
           <AmountIndicatorLine>
             <AmountIndicatorArea>
@@ -180,7 +117,7 @@ const Home: FC = () => {
               </div>
             </AmountIndicatorArea>
 
-            <PrimaryButton>
+            <PrimaryButton onClick={() => history.push(REGISTER_SALE)}>
               Nova compra
               <Plus size="18" />
             </PrimaryButton>

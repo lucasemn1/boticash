@@ -1,18 +1,46 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
+
+// Components
 import ProfileButton from "../ProfileButton/ProfileButton";
 
-import {
-  FullPage
-} from "./style";
+// Styled components
+import { FullPage, TitleArea, BackButton } from "./style";
 
-const Topbar: FC = () => {
+// Icons
+import { ArrowLeft } from "react-feather";
+import { useHistory } from "react-router";
+
+interface IProps {
+  showBackButton?: boolean;
+  title: string;
+}
+
+const Topbar: FC<IProps> = ({ showBackButton, title }) => {
+  const history = useHistory();
+
+  useEffect(() => {
+    document.title = `Boticash | ${title}`;
+  }, [title]);
+
+  function backPage() {
+    history.goBack();
+  }
+
   return (
     <FullPage>
-      <h3>Boticash / Início</h3>
+      <TitleArea>
+        {showBackButton && (
+          <BackButton onClick={backPage}>
+            <ArrowLeft size="18" />
+          </BackButton>
+        )}
+
+        <h3>Boticash / {title}</h3>
+      </TitleArea>
 
       <ProfileButton />
     </FullPage>
   );
-}
+};
 
 export default Topbar;

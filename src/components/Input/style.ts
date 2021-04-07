@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import InputMask from 'react-input-mask';
+import InputMask from "react-input-mask";
 
 export const InputContainer = styled.div`
   display: flex;
@@ -20,11 +20,18 @@ export const InputBox = styled.div`
 `;
 
 export const InputField = styled.input`
+  /* appearance: none; */
   padding: 0 5px 0 23px;
   font-size: 16px;
   height: 100%;
   width: 100%;
   border: none;
+  background-color: ${({ theme }) => theme.colors.getBackgroundColor2()};
+  appearance: none;
+
+  &[type=date]::-webkit-calendar-picker-indicator {
+    margin-right: 10px;
+  }
 `;
 
 export const InputMaskedField = styled(InputMask)`

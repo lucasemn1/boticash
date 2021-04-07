@@ -1,18 +1,8 @@
 import styled from "styled-components";
-import {
-  FullPage as DefaultFullPage,
-  PageContent as DefaultPageContent,
-} from "../../styles/components/layout";
 import { PrimaryButton as DefaultPrimaryButton } from "../../styles/components/buttons";
 
 // Breakpoints
 import { MD, XL } from "../../util/mediaBreakpoints";
-
-export const FullPage = styled(DefaultFullPage)``;
-
-export const PageContent = styled(DefaultPageContent)`
-  margin: 0 auto;
-`;
 
 export const AmountIndicatorLine = styled.div`
   display: flex;
