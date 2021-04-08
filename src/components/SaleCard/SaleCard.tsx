@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ISaleCard from "../../interfaces/SaleCard";
-import { getDateInBrazilianStandard } from "../../util/data";
+import { getDateInBrazilianStandard } from "../../util/date";
 
 // Styled components
 import {

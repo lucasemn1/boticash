@@ -1,10 +1,10 @@
 import axios, { AxiosInstance } from "axios";
 
 interface IAccountData {
-  name: string,
-  email: string,
-  cpf: string,
-  password: string,
+  name: string;
+  email: string;
+  cpf: string;
+  password: string;
 }
 
 class CreateAccount {

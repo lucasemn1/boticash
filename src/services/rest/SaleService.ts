@@ -30,8 +30,6 @@ class SaleService {
 
       return { status: true, response, data: response.data };
     } catch (err) {
-      console.log(err);
-
       return {
         status: false,
         response: err.response,
