@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ICashbackCard from "../../interfaces/CashbackCard";
+import ISaleCard from "../../interfaces/SaleCard";
 import { getDateInBrazilianStandard } from "../../util/data";
 
 // Styled components
@@ -10,12 +10,12 @@ import {
   StatusIndicator,
 } from "./style";
 
-interface IProps extends ICashbackCard {};
+interface IProps extends ISaleCard {};
 
 const CashbackCard: FC<IProps> = ({
   status,
-  expectedValue,
-  purchasePrice,
+  cashbackValue,
+  price,
   percentageWon,
   saleCode,
   saleDate,
@@ -32,12 +32,12 @@ const CashbackCard: FC<IProps> = ({
 
   return (
     <CardContainer className={status}>
-      <ExpectedValue>{expectedValue}</ExpectedValue>
+      <ExpectedValue>{cashbackValue}</ExpectedValue>
 
       <GridContainer>
         <div>
           <h3>Valor da compra</h3>
-          <h2>{purchasePrice}</h2>
+          <h2>{price}</h2>
         </div>
         <div>
           <h3>Porcentagem</h3>

@@ -1,15 +1,14 @@
 import { FC, useEffect, useState } from "react";
 import { scrollToTop } from "../../util/window";
 import { useHistory } from "react-router";
-import ICashbackCard from "../../interfaces/CashbackCard";
-import salesToTest from "./sales";
+import ISaleCard from "../../interfaces/SaleCard";
 
 // Components
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
 import Topbar from "../../components/Topbar/Topbar";
-import CashbackCard from "../../components/CashbackCard/CashbackCard";
+import SaleCard from "../../components/SaleCard/SaleCard";
 
 // Styled components
 import {
@@ -31,22 +30,35 @@ import { Plus, Search } from "react-feather";
 import cashbackIcon from "../../assets/icons/cashback_icon.svg";
 import { REGISTER_SALE } from "../../router/routes";
 
+// Services
+import SaleService from "../../services/rest/SaleService";
+
 const Home: FC = () => {
   const history = useHistory();
 
-  const [sales] = useState<ICashbackCard[]>(salesToTest);
-  const [filteredSales, setFilteredSales] = useState<ICashbackCard[]>([]);
+  const [sales, setSales] = useState<ISaleCard[]>([]);
+  const [filteredSales, setFilteredSales] = useState<ISaleCard[]>([]);
   const [statusFilter, setStatusFilter] = useState<string>("");
   const [searchValue, setSearchValue] = useState<string>("");
 
   useEffect(() => {
     scrollToTop();
+    loadSales();
   }, []);
 
   useEffect(() => {
     handleFilter(searchValue, statusFilter);
     /* eslint-disable-next-line */
   }, [searchValue, statusFilter]);
+
+  async function loadSales() {
+    const saleService = new SaleService();
+    const { status, data } = await saleService.getAllSalesFromUser();
+
+    if (status) {
+      setSales(data);
+    }
+  }
 
   function handleFilter(code: string, status: string) {
     let salesResult = sales;
@@ -82,16 +94,16 @@ const Home: FC = () => {
   }
 
   function renderCards() {
-    const salesToRender = filteredSales ? filteredSales : sales;
+    const salesToRender = filteredSales.length > 0 ? filteredSales : sales;
 
     return salesToRender.map((sale, index) => (
-      <CashbackCard
+      <SaleCard
         key={index}
         status={sale.status}
-        expectedValue={sale.expectedValue}
-        purchasePrice={sale.purchasePrice}
+        cashbackValue={sale.cashbackValue}
+        price={sale.price}
         percentageWon={sale.percentageWon}
-        saleDate={sale.saleDate}
+        saleDate={new Date(sale.saleDate)}
         saleCode={sale.saleCode}
       />
     ));
