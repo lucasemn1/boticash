@@ -1,16 +1,22 @@
 import { FC, useState } from "react";
-import { LogOut, User } from "react-feather";
 import { useHistory } from "react-router";
+
+// Routes
 import { LANDING } from "../../router/routes";
+
+// Styled components
 import { Dropdown, ProfileButtonArea, ProfileInfoArea } from "./style";
+
+// Icons
+import { LogOut, User } from "react-feather";
 
 const ProfileButton: FC = () => {
   const history = useHistory();
-
-  // States
+  
   const [showMenuOptions, setShowMenuOptions] = useState(false);
 
   function logout() {
+    localStorage.removeItem("accessToken");
     history.push(LANDING);
   }
 
@@ -33,6 +39,6 @@ const ProfileButton: FC = () => {
       )}
     </ProfileButtonArea>
   );
-}
+};
 
 export default ProfileButton;

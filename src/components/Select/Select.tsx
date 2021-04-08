@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from "react";
 
-// Styles
+// Styled components
 import {
   Label,
   SelectField,
