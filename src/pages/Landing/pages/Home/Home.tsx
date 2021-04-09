@@ -11,8 +11,8 @@ import { LogIn } from "react-feather";
 const Home: FC = () => {
   return <>
     <h3>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+      O Boticash é de um sistema online que tem como propósito 
+      ajudar no acompanhamento de vendas e gestão de cashback para revendedores Boticário. 
     </h3>
 
     <FlexColumn>

@@ -16,7 +16,7 @@
 
 ## Qual o propósito do Boticash? 🤔
 
-O Boticash é de um sistema online que tem como propósito de ajudar no acompanhamento de vendas e gestão de cashback para revendedores Boticário. 🤝🤑❤️
+O Boticash é de um sistema online que tem como propósito ajudar no acompanhamento de vendas e gestão de cashback para revendedores Boticário. 🤝🤑❤️
 
 ## Sobre esse projeto 💬
 
