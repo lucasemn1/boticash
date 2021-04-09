@@ -2,8 +2,9 @@
 <p align="center">
   <img src="http://boticash.netlify.app/logo192.png" alt="Logo Boticash"/>
 </p>
-# <center>Boticash</center>
+
 ---
+# Boticash
 
 ## Acesse 👩‍💻
 * [Boticash no Netlify](https://boticash.netlify.app/)
