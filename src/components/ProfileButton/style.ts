@@ -10,13 +10,17 @@ export const ProfileInfoArea = styled.button`
   background: transparent;
   padding: 0 3px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 154px;
   height: 28px;
 
   & svg {
     color: ${({ theme }) => theme.colors.primary};
+  }
+
+  & h4 {
+    text-align: right;
   }
 
   @media (max-width: ${MD}px) {
@@ -26,6 +30,7 @@ export const ProfileInfoArea = styled.button`
     
     & > h4 {
       display: none;
+      text-align: right;
     }
   }
 `;

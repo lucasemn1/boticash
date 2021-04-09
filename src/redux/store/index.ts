@@ -11,14 +11,18 @@ import reducerExample, {
   IReducerExampleState,
 } from "../reducers/reducerExample";
 
+import userReducer, { IUserReducer } from "../reducers/user";
+
 export interface IState {
   // Enter the reducer status typing here
   example: IReducerExampleState;
+  user: IUserReducer;
 }
 
 const reducers = combineReducers({
   // Name and match your reducer to the main
   example: reducerExample,
+  user: userReducer,
 });
 
 const store = createStore(reducers);

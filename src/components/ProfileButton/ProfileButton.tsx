@@ -1,5 +1,7 @@
 import { FC, useState } from "react";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
+import { IState } from "../../redux/store";
 
 // Routes
 import { LANDING } from "../../router/routes";
@@ -12,6 +14,7 @@ import { LogOut, User } from "react-feather";
 
 const ProfileButton: FC = () => {
   const history = useHistory();
+  const user = useSelector((state: IState) => state.user);
   
   const [showMenuOptions, setShowMenuOptions] = useState(false);
 
@@ -23,7 +26,7 @@ const ProfileButton: FC = () => {
   return (
     <ProfileButtonArea>
       <ProfileInfoArea onClick={() => setShowMenuOptions(!showMenuOptions)}>
-        <h4>Lucas Emanuel</h4>
+        <h4>{user.name}</h4>
         <User size="20" />
       </ProfileInfoArea>
 

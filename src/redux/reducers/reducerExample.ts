@@ -1,3 +1,5 @@
+import { TEST } from "../actions/actionExample";
+
 export interface IReducerExampleState {
   result: boolean;
 }
@@ -11,7 +13,7 @@ export default function reducerExample(
   action: { type: string }
 ) {
   switch (action.type) {
-    case "TEST":
+    case TEST:
       return { ...state, test: true };
     default:
       return state;
